@@ -11,6 +11,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src="//code.jquery.com/jquery.js"></script> <style> .node { stroke: #fff; stroke-width: 1.5px; } .link { stroke: #999; stroke-opacity: .6; } </style> 
   </head>
   <body>
     <div class="wrapper">
@@ -30,6 +31,11 @@
         <p><em>View the <a href="https://github.com/SmartringUsageStudy/heb_visualization">source code</a> for this visualization.</em></p>
 
         <p>This interactive visualization allows you to highlight connections between themes and codes.</p>
+
+        <div id='d3div'></div>
+
+        <script src="//d3js.org/d3.v3.min.js"></script>
+        <script> var width = $("#d3div").width(), height = 400; var color = d3.scale.category20(); var force = d3.layout.force() .charge(-62) .linkDistance(80) .size([width, height]); var svg = d3.select("#d3div").append("svg") .attr("width", width) .attr("height", height); d3.json("../../../../scripts/jazz_scales_network_minCTs6.json", function(error, graph) { if (error) throw error; force .nodes(graph.nodes) .links(graph.links) .start(); var link = svg.selectAll(".link") .data(graph.links) .enter().append("line") .attr("class", "link") .style("stroke-width", function(d) { return Math.sqrt(d.value); }); var node = svg.selectAll(".node") .data(graph.nodes) .enter().append("circle") .attr("class", "node") .attr("r", 5) .style("fill", function(d) { return color(d.group); }) .call(force.drag); node.append("title") .text(function(d) { return d.name; }); force.on("tick", function() { link.attr("x1", function(d) { return d.source.x; }) .attr("y1", function(d) { return d.source.y; }) .attr("x2", function(d) { return d.target.x; }) .attr("y2", function(d) { return d.target.y; }); node.attr("cx", function(d) { return d.x; }) .attr("cy", function(d) { return d.y; }); }); }); </script> 
 
         <!-- <ul>
           <li>item</li>
@@ -70,10 +76,10 @@
         </table> -->
 
       </section>
-      <footer>
-        <!-- <p>This project is maintained by <a href="http://github.com/orderedlist">Steve Smith</a></p> -->
+      <!-- <footer>
+        <p>This project is maintained by <a href="http://github.com/orderedlist">Steve Smith</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+      </footer> -->
     </div>
     <script src="javascripts/scale.fix.js"></script>
   </body>
