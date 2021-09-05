@@ -76,7 +76,7 @@ function update() {
             return arcBuilder();
         });
     path.attr("fill", "grey")
-    path.attr("fill-opacity", 0.5)
+    path.attr("fill-opacity", 0.3)
 
     // DATA JOIN
     var circle = svg.selectAll("circle")
@@ -131,7 +131,7 @@ function update() {
     circle.on('mouseout', function (d) {
         circle.attr("opacity", 1)
         path.attr('fill', 'grey')
-            .attr('fill-opacity', .5)
+            .attr('fill-opacity', .3)
         text.attr("font-size", 20)
     })
 
