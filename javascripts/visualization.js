@@ -109,7 +109,7 @@ function update() {
     // ENTER
     text.enter()
         .append("text")
-        .attr("y", nodeY + 13)
+        .attr("y", nodeY + 15)
         .attr("x", function (d, i) { return nodeDisplayX(d) - (-20); })
         .attr("transform", function (d, i) { return textTransform(d); })
         .attr("font-size", "20px")
@@ -125,11 +125,14 @@ function update() {
         path
             .attr('fill', function (link_d) { return link_d.source === d.id || link_d.target === d.id ? colors[d.group] : 'grey'; })
             .attr('fill-opacity', function (link_d) { return link_d.source === d.id || link_d.target === d.id ? 0.5 : 0.05; })
+        text
+            .attr("font-size", function(label_d){ return label_d.nodeName === d.nodeName ? 30 : 20 } )
     })
     circle.on('mouseout', function (d) {
         circle.attr("opacity", 1)
         path.attr('fill', 'grey')
             .attr('fill-opacity', .5)
+        text.attr("font-size", 20)
     })
 
 }
