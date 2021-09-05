@@ -1,10 +1,10 @@
 var i,
     width = 1920,
     height = 1080,
-    margin = 70,
+    margin = 140,
     transitionTime = 2000,
-    spacing = 50,
-    nodeY = 750,
+    spacing = 45,
+    nodeY = 650,
     nodes = connections.nodes,
     links = connections.links,
     colors = ["#354997", "#6db54e", "#fa9541", "#a73067"]
@@ -110,7 +110,7 @@ function update() {
     text.enter()
         .append("text")
         .attr("y", nodeY + 13)
-        .attr("x", function (d, i) { return nodeDisplayX(d) - (-25); })
+        .attr("x", function (d, i) { return nodeDisplayX(d) - (-20); })
         .attr("transform", function (d, i) { return textTransform(d); })
         .attr("font-size", "20px")
         .text(function (d, i) { return d.nodeName; });
