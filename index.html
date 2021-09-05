@@ -1,141 +1,44 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title></title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!-- <script src="javascripts/jquery.min.js"></script> -->
     <script src="javascripts/jquery.min.js"></script>
-    <style> .node { stroke: #fff; stroke-width: 1.5px; } .link { stroke: #999; stroke-opacity: .6; } </style>
-    <!-- <script src="javascripts/d3.v3.min.js"></script> -->
-    <!-- <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
     <script src="javascripts/d3.v3.min.js" charset="utf-8"></script>
     <script src="javascripts/scale.fix.js"></script>
+    <script src="scripts/connections.js"></script>
 </head>
-  <body>
+
+<body>
     <div class="wrapper">
-      <!-- <header>
+        <!-- <header>
         <h1>Minimal</h1>
         <p>A Theme for GitHub Pages</p>
         <p class="view"><a href="http://github.com/orderedlist/minimal">View the Project on GitHub <small>orderedlist/minimal</small></a></p>
-        <ul>
-          <li><a href="https://github.com/orderedlist/minimal/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/orderedlist/minimal/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="http://github.com/orderedlist/minimal">Fork On <strong>GitHub</strong></a></li>
-        </ul>
       </header> -->
-      <section>
-        <h1>Hierarchical Edge Bundling Interactive Visualization</h1>
+        <section>
+            <h1>Smartring Usage Network Visualization</h1>
 
-        <p><em>View the <a href="https://github.com/SmartringUsageStudy/heb_visualization">source code</a> for this visualization.</em></p>
+            <p><em>View the <a href="https://github.com/SmartringUsageStudy/heb_visualization">source code</a> for this
+                    visualization.</em></p>
 
-        <p>This interactive visualization allows you to highlight connections between themes and codes.</p>
+            <p>This interactive visualization allows you to highlight connections between themes and codes, and complements Figure 3 of our paper <em>One Ring to Rule Them All: An Empirical Understanding of Day-to-Day Smartring Usage Through In-Situ Diary Study</em>.</p>
 
-        <div id='d3div'></div>
-
-        <!-- <ul>
-          <li>item</li>
-        </ul> -->
-
-
-        <!-- <pre><code>['a', 'b'].map { |x| x.uppercase }</code></pre> -->
-
-        <!-- <dl>
-          <dt>Lower cost</dt>
-          <dd>The new version of this product costs significantly less than the previous one!</dd>
-          <dt>Easier to use</dt>
-          <dd>We've changed the product so that it's much easier to use!</dd>
-        </dl> -->
-
-        <!-- <blockquote>
-        <p>I, at any rate, am convinced that He does not throw dice.</p>
-        </blockquote> -->
-
-        <!-- <table>
-          <tbody>
-        <tr>
-            <th>ID</th>
-        <th>Name</th>
-        <th>Rank</th>
-          </tr>
-          <tr>
-            <td>1</td>
-        <td>Tom Preston-Werner</td>
-        <td>Awesome</td>
-          </tr>
-          <tr>
-            <td>2</td>
-        <td>Albert Einstein</td>
-        <td>Nearly as awesome</td>
-          </tr>
-        </tbody>
-        </table> -->
-
-      </section>
-      <!-- <footer>
-        <p>This project is maintained by <a href="http://github.com/orderedlist">Steve Smith</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer> -->
+            <body>Order:
+                <select id="selectSort">
+                    <option value="Group">by Theme</option>
+                    <option value="Frequency">by Frequency</option>
+                </select>
+            </body>
+            <div id='d3div'></div>
+        </section>
     </div>
-    <script>
+</body>
+<script src="javascripts/visualization.js"></script>
 
-        var width = $("#d3div").width(),
-            height = 400;
-
-        var color = d3.scale.category20();
-
-        var force = d3.layout.force()
-            .charge(-62)
-            .linkDistance(80)
-            .size([width, height]);
-
-        var svg = d3.select("#d3div").append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        d3.json("scripts/jazz_scales_network_minCTs6.json", function(error, graph) {
-        if (error) throw error;
-
-        force
-            .nodes(graph.nodes)
-            .links(graph.links)
-            .start();
-
-        var link = svg.selectAll(".link")
-            .data(graph.links)
-            .enter().append("line")
-            .attr("class", "link")
-            .style("stroke-width", function(d) { return Math.sqrt(d.value); });
-
-        var node = svg.selectAll(".node")
-            .data(graph.nodes)
-            .enter().append("circle")
-            .attr("class", "node")
-            .attr("r", 5)
-            .style("fill", function(d) { return color(d.group); })
-            .call(force.drag);
-
-        node.append("title")
-            .text(function(d) { return d.name; });
-
-        force.on("tick", function() {
-            link.attr("x1", function(d) { return d.source.x; })
-                .attr("y1", function(d) { return d.source.y; })
-                .attr("x2", function(d) { return d.target.x; })
-                .attr("y2", function(d) { return d.target.y; });
-
-            node.attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
-        });
-        });
-
-        </script>
-  </body>
 </html>

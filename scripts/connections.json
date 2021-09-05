@@ -1,16 +1,11 @@
 {
     "nodes":[
-    {"group": 1, "name": "Activities"},
-    {"group": 1, "name": "Tasks"},
-    {"group": 1, "name": "Interactions"},
-    {"group": 1, "name": "Devices"},
     {"group": 2, "name": "Transportation"},
     {"group": 2, "name": "Physical Activity"},
     {"group": 2, "name": "Self-Care"},
     {"group": 2, "name": "Day-to-Day"},
     {"group": 2, "name": "Entertainment/Leisure"},
     {"group": 2, "name": "Work/Study"},
-
     {"group": 3, "name": "Activity Recognition"},
     {"group": 3, "name": "Keyboard/Mouse Control"},
     {"group": 3, "name": "Communication"},
