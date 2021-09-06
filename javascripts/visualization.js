@@ -3,8 +3,8 @@ var i,
     height = 1080,
     margin = 140,
     transitionTime = 2000,
-    spacing = 45,
-    nodeY = 650,
+    spacing = 35, // node spacing in the x direction
+    nodeY = 500, // y position of the nodes. how far down the nodes will be brought (leaving room for the high points of the arcs)
     nodes = connections.nodes,
     links = connections.links,
     colors = ["#354997", "#6db54e", "#fa9541", "#a73067"]
@@ -110,9 +110,9 @@ function update() {
     text.enter()
         .append("text")
         .attr("y", nodeY + 15)
-        .attr("x", function (d, i) { return nodeDisplayX(d) - (-20); })
+        .attr("x", function (d, i) { return nodeDisplayX(d) - (-10); })
         .attr("transform", function (d, i) { return textTransform(d); })
-        .attr("font-size", "20px")
+        .attr("font-size", "14px")
         .text(function (d, i) { return d.nodeName; });
 
     // Add the highlighting functionality
@@ -126,13 +126,13 @@ function update() {
             .attr('fill', function (link_d) { return link_d.source === d.id || link_d.target === d.id ? colors[d.group] : 'grey'; })
             .attr('fill-opacity', function (link_d) { return link_d.source === d.id || link_d.target === d.id ? 0.5 : 0.05; })
         text
-            .attr("font-size", function(label_d){ return label_d.nodeName === d.nodeName ? 30 : 20 } )
+            .attr("font-size", function(label_d){ return label_d.nodeName === d.nodeName ? 18: 14 } )
     })
     circle.on('mouseout', function (d) {
         circle.attr("opacity", 1)
         path.attr('fill', 'grey')
             .attr('fill-opacity', .3)
-        text.attr("font-size", 20)
+        text.attr("font-size", 14)
     })
 
 }
