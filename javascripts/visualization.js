@@ -76,7 +76,7 @@ function update() {
             return arcBuilder();
         });
     path.attr("fill", "grey")
-    path.attr("fill-opacity", 0.3)
+    path.attr("fill-opacity", 0.2)
 
     // DATA JOIN
     var circle = svg.selectAll("circle")
@@ -109,7 +109,7 @@ function update() {
     // ENTER
     text.enter()
         .append("text")
-        .attr("y", nodeY + 15)
+        .attr("y", nodeY + 12)
         .attr("x", function (d, i) { return nodeDisplayX(d) - (-10); })
         .attr("transform", function (d, i) { return textTransform(d); })
         .attr("font-size", "14px")
@@ -131,7 +131,7 @@ function update() {
     circle.on('mouseout', function (d) {
         circle.attr("opacity", 1)
         path.attr('fill', 'grey')
-            .attr('fill-opacity', .3)
+            .attr('fill-opacity', .2)
         text.attr("font-size", 14)
     })
 
