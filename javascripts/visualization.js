@@ -3,8 +3,8 @@ var i,
     height = 1080,
     margin = 140,
     transitionTime = 2000,
-    spacing = 35, // node spacing in the x direction
-    nodeY = 500, // y position of the nodes. how far down the nodes will be brought (leaving room for the high points of the arcs)
+    spacing = 30, // node spacing in the x direction
+    nodeY = 450, // y position of the nodes. how far down the nodes will be brought (leaving room for the high points of the arcs)
     nodes = connections.nodes,
     links = connections.links,
     colors = ["#354997", "#6db54e", "#fa9541", "#a73067"]
@@ -90,7 +90,7 @@ function update() {
         .append("circle")
         .attr("cy", nodeY)
         .attr("cx", function (d, i) { return nodeDisplayX(d); })
-        .attr("r", function (d, i) { return mapRange(d.value, nodeValMin, nodeValMax, 2.5, 50); })
+        .attr("r", function (d, i) { return mapRange(d.value, nodeValMin, nodeValMax, 2.5, 35); })
         .attr("fill", function (d, i) { return colors[d.group]; })
         .attr("stroke", "white")
     // .attr("stroke", function(d,i) {return d3.rgb(colors(d.group)).darker(1);});
