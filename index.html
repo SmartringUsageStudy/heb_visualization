@@ -24,7 +24,13 @@
         <section>
             <h1>Smartring Usage Visualization</h1>
 
-            <p>This interactive visualization allows you to highlight connections between themes and codes, and complements Figure 3 of our paper <em>One Ring to Rule Them All: An Empirical Understanding of Day-to-Day Smartring Usage Through In-Situ Diary Study</em>. To interact, either choose an order from the dropdown below or hover over the colored nodes.</p>
+            <p>This interactive visualization allows you to highlight connections between themes and codes, and complements Figure 3 of our paper 
+                <em>One Ring to Rule Them All: An Empirical Understanding of Day-to-Day Smartring Usage Through In-Situ Diary Study</em>. 
+                To interact, either choose an order from the dropdown below or hover over the colored nodes. 
+                Hovering on a colored node allows you to see the connections between that node and any others, as reported within our participants entries. 
+                The thickness of an arc represents the count of a specific connection reported, from the highlighted node to the node at the end of the arc. 
+                Table 2, from our paper, is added below to provide examples of each code for better understanding during your exploration.
+                To reduce the complexty, all singleton responses were removed.</p>
 
             <p><em>View the source code for this
                 visualization <a href="https://github.com/SmartringUsageStudy/heb_visualization">here</a>.</em></p>
@@ -36,6 +42,7 @@
                 </select>
             </body>
             <div id='d3div'></div>
+            <img src="images/response_count_table.png" alt="Table 2">
         </section>
     </div>
 </body>
